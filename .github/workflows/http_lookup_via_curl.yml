@@ -14,4 +14,4 @@ jobs:
       #  uses: actions/checkout@v4
 
       - name: Make API Call
-        run: curl https://api.nasa.gov/planetary/apod?api_key=${{ NASA_API_KEY }}
+        run: curl https://api.nasa.gov/planetary/apod?api_key=${{ secrets.NASA_API_KEY }}
