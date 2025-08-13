@@ -1,0 +1,17 @@
+name: Making an HTTP lookup - with ACTIONS only
+
+# triggers the workflow on every push
+on: [push]
+
+# groups the steps to be run
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy Stage
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: https://api.nasa.gov/planetary/apod?api_key=${{ secrets.NASA_API_KEY }}
+        method: GET
+        #data: '{"api_key": ${{ secrets.NASA_API_KEY }}}'
