@@ -1,7 +1,7 @@
 name: Making an HTTP lookup - with ACTIONS only
 
-# triggers the workflow on every push
-on: [push]
+on:
+  workflow_dispatch: # Manual trigger
 
 # groups the steps to be run
 
