@@ -12,7 +12,7 @@ jobs:
 
       - name: Get NASA APOD JSON
         id: get_apod
-        run: curl -s "https://api.nasa.gov/planetary/apod?api_key=${{ secrets.NASA_API_KEY }}" > apod.json
+        run: curl -s https://api.nasa.gov/planetary/apod?api_key=${{ secrets.NASA_API_KEY }} >> apod.json
 
       - name: Extract hdurl
         id: extract_hdurl
