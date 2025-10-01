@@ -1,3 +1,5 @@
+name: Making an HTTP lookup with jq and HD download
+
 on:
   workflow_dispatch: # Manual trigger
 
