@@ -1,0 +1,29 @@
+on:
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  fetch_apod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Get NASA APOD JSON
+        id: get_apod
+        run: |
+          curl -s "https://api.nasa.gov/planetary/apod?api_key=${{ secrets.NASA_API_KEY }}" > apod.json
+
+      - name: Extract hdurl
+        id: extract_hdurl
+        run: |
+          echo "HDURL=$(jq -r .hdurl apod.json)" >> $GITHUB_ENV
+
+      - name: Download image
+        run: |
+          wget -O apod_image.jpg "$HDURL"
+
+      - name: Upload image as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: apod_image
+          path: apod_image.jpg
